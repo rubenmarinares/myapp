@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Aplicación{% endblock %}</title>
+  <link rel="stylesheet" href="{{ PUBLIC_PATH }}assets/app.css">
+</head>
+<body class="mobile">
+<main class="container">
+  {% for message in messages %}
+  <p class="alert alert-{{ message.type|default('info') }}" role="status">{{ message.text|default(message) }}</p>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</main>
+</body>
+</html>

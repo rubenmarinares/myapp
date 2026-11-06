@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Aplicación{% endblock %}</title>
+  <link rel="stylesheet" href="{{ PUBLIC_PATH }}assets/app.css">
+</head>
+<body>
+{% if logado %}
+<header class="topbar">
+  <nav>
+    {% for entry in menu %}
+      <a href="{{ APP_PATH }}{{ entry.url }}">{{ entry.label }}</a>
+      {% for child in entry.submenu|default([]) %}{% if child.url != entry.url %}<a class="child" href="{{ APP_PATH }}{{ child.url }}">{{ child.label }}</a>{% endif %}{% endfor %}
+    {% endfor %}
+  </nav>
+  <form method="post" action="{{ APP_PATH }}logout">
+    {{ print_csrf_token() }}
+    <span class="user">{{ currentuser.name }}</span>
+    <button class="btn btn-outline-secondary" type="submit">Salir</button>
+  </form>
+</header>
+{% endif %}
+<main class="container">
+  {% for message in messages %}
+  <p class="alert alert-{{ message.type|default('info') }}" role="status">{{ message.text|default(message) }}</p>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</main>
+</body>
+</html>

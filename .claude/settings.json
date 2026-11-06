@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "nucleo": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/brigantia-es/nucleo.git"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "nucleo@nucleo": true
+  }
+}

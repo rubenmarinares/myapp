@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# PHP en CGI/FastCGI no recibe la cabecera Authorization si no se le pasa así.
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+# Lo que no es un fichero de public/ lo atiende la aplicación.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]

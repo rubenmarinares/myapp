@@ -1,0 +1,5 @@
+# Para alojamientos cuyo directorio web es la raíz del proyecto y no public/.
+# Todo se sirve desde public/: src/, config/, vendor/, var/ y .env quedan fuera del alcance de una URL.
+RewriteEngine On
+RewriteRule ^$ public/ [L]
+RewriteRule (.*) public/$1 [L]

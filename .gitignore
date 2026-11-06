@@ -1,0 +1,8 @@
+/vendor/
+/.env
+/var/cache/*
+/var/logs/*
+!/var/cache/.gitignore
+!/var/logs/.gitignore
+/.phpunit.cache/
+/var/*.sqlite
